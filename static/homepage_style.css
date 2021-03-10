@@ -1,0 +1,47 @@
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    -moz-background-size: 100%; 
+    -webkit-background-size: 100%; 
+    -o-background-size: 100%; 
+    background-size: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#GlobalSearchButton {
+    background-color: lightgray;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-color: lightgray;
+    border-top-color: lightgray;
+    border-right-color: lightgray;
+    margin-right: 10rem;
+}
+
+.form-control {
+    border-color: lightgray;
+    margin-left: 10rem;
+}
+
+.jumbotron {
+  display: flex;
+  align-items: center;
+  background-image: url('background-blur.jpg');
+  background-size: cover;
+  color: #ffffff;
+  height: 100vh;
+}
+
+.jumbotron h2 {
+  font-size: 45px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.input-group {
+    width: 100%;
+    margin: auto;
+}
+
+

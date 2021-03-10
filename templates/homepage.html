@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ingredients2Recipe</title>
+  <meta charset="utf-8" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+  <!-- <link href="/Users/alex/PycharmProjects/ingredients2recipe/static/homepage_style.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='homepage_style.css') }}"/>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+  <section class="jumbotron">
+    <div class="container text-center">
+        <h2>Ingredients2Recipe</h2>
+        <form method="post">
+          <div class="input-group">
+              <input type="text" name="user_text" class="form-control" placeholder="Type ingredients" autofocus/>
+                <span class="input-group-btn">
+                  <button class="btn btn-default" id="GlobalSearchButton" type="submit">Search</button>
+                </span>
+          </div>
+        </form>
+    </div>
+  </section>
+  </body>
+  </html>

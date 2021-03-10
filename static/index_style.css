@@ -1,0 +1,63 @@
+.jumbotron {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+#GlobalSearchButton {
+    background-color: lightgray;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-color: lightgray;
+    border-top-color: lightgray;
+    border-right-color: lightgray;
+    margin-top: 2rem;
+    margin-right: 3rem;
+}
+
+.form-control {
+    border-color: lightgray;
+    margin-top: 2rem;
+    margin-left: 3rem;
+}
+
+.card {
+    border-radius: 7%
+}
+
+.card-body {
+    border-radius: 7%
+}
+
+.bd-placeholder-img {
+    border-radius: 7%
+}

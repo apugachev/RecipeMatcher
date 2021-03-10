@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ingredients2Recipe</title>
+
+    <!-- Bootstrap core CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <link href="{{ url_for('static', filename='index_style.css') }}" rel="stylesheet">
+    <!-- <link href="/Users/alex/PycharmProjects/ingredients2recipe/static/index_style.css" rel="stylesheet"> -->
+  </head>
+  <body>
+
+<main role="main">
+
+<nav class="navbar navbar-expand-sm bg-light">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="/">Ingredients2Recipe</a>
+    </li>
+  </ul>
+</nav>
+
+    <div class="container text-center">
+      <form method="post">
+          <div class="input-group">
+              <input type="text" name="user_text" class="form-control" placeholder="Type ingredients"/>
+                <span class="input-group-btn">
+                  <button class="btn btn-default" id="GlobalSearchButton" type="submit">Search</button>
+                </span>
+          </div>
+      </form>
+      <h2 class="jumbotron-heading">Search results for: {{query}}</h2>
+    </div>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        {% for hit in hits %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="bd-placeholder-img card-img-top" width="400" height="250" src="{{ hit._source.photo_url }}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail" id="ResultImage">
+            <div class="card-body">
+              <p class="card-text">{{ hit._source.recipe_name }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                </div>
+                <small class="text-muted">{{ hit._source.total_time }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+</main>
+</body>
+</html>
