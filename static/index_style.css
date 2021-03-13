@@ -68,8 +68,9 @@ footer p {
 
 .album {
     align-items: center;
-    background-image: url('background_index.jpg');
-    background-size: auto;
+    background-image: url('background-blur.jpg');
+    background-size: cover;
+    display: flex;
     background-repeat: repeat;
 }
 
@@ -114,7 +115,6 @@ footer p {
   to {top:0; opacity:1}
 }
 
-/* The Close Button */
 .close {
   color: white;
   float: right;
@@ -138,6 +138,7 @@ footer p {
 
 .RecipeTitle {
     color: white;
+    text-align: center;
 }
 
 .modal-body {padding: 2px 16px;}

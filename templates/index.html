@@ -64,7 +64,7 @@
               <p class="card-text">{{ hit._source.recipe_name }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Recipe</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" id="RecipeButton">Recipe</button>
                     
                     <!-- The Modal -->
                     <div id="myModal" class="modal">
@@ -78,13 +78,24 @@
                             <h4>Ingredients:</h4>
                             {% if hit._source.ingredients_amount %}
                                 {% for ingredient, amount in zip(hit._source.ingredients, hit._source.ingredients_amount) %}
-                                    <p>{{ ingredient }}: {{ amount }}</p>
+                                    {% if set(ingredient.lower().split()).intersection(normed_query) %}
+                                        <p><font color='green'>✓ {{ ingredient }}: {{ amount }}</font></p>
+                                    {% else %}
+                                        <p><font color='red'>× {{ ingredient }}: {{ amount }}</font></p>
+                                    {% endif%}
                                 {% endfor %}
+                            
                             {% else %}
                                 {% for ingredient in hit._source.ingredients %}
-                                    <p>{{ ingredient }}</p>
+                                    {% if set(ingredient.lower().split()).intersection(normed_query) %}
+                                        <p><font color='green'>✓ {{ ingredient }}</font></p>
+                                    {% else %}
+                                        <p><font color='red'>× {{ ingredient }}</font></p>
+                                    {% endif%}
                                 {% endfor %}
+                            
                             {% endif %}
+                            
                             <h4>Recipe:</h4>
                             {% for step in hit._source.recipe %}
                                 <p>{{ step }}</p>
