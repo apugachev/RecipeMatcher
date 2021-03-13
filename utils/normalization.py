@@ -5,7 +5,7 @@ import pymorphy2
 import json
 
 import nltk
-nltk.download("wordnet")
+nltk.download("wordnet", quiet=True)
 from nltk.stem import WordNetLemmatizer
 
 class Normalizer(ABC):

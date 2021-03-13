@@ -16,6 +16,10 @@ query_builder = QueryBuilder()
 
 app = Flask(__name__)
 
+@app.template_global(name='zip')
+def _zip(*args, **kwargs): #to not overwrite builtin zip in globals
+    return __builtins__.zip(*args, **kwargs)
+
 @app.route("/")
 def index():
     return render_template(HOMEPAGE_HTML)
@@ -35,7 +39,7 @@ def my_form_post():
 
     hits = search_result.json()[HITS][HITS]
 
-    return render_template(INDEX_HTML, query=text, hits=hits)
+    return render_template(INDEX_HTML, query=text, hits=hits, zip=zip)
 
 if __name__ == "__main__":
     app.run(debug=True)
