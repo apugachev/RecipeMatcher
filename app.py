@@ -4,6 +4,7 @@ import re
 from utils import constants as cnts
 from utils.normalization import RuNormalizer, EnNormalizer
 from utils.query_builder import QueryBuilder
+from utils.indexer import Indexer
 
 import logging
 from logging import FileHandler, StreamHandler
@@ -14,6 +15,10 @@ import datetime
 
 ru_normalizer = RuNormalizer(cnts.QUERY_EXPANSION_PATH)
 en_normalizer = EnNormalizer(cnts.QUERY_EXPANSION_PATH)
+indexer = Indexer(
+    ru_data_path="static_files/data/ru_data.jsonl",
+    en_data_path="static_files/data/en_data.jsonl"
+)
 query_builder = QueryBuilder()
 
 app = Flask(__name__)
@@ -59,4 +64,15 @@ if __name__ == "__main__":
                             ),
                             StreamHandler()
                         ])
+
+    response_ru = requests.get(f"http://{cnts.HOST}:{cnts.PORT}/{cnts.RU_INDEX_NAME}/_stats")
+    if response_ru.status_code != 200:
+        logging.info("Empty RU index!")
+        indexer.index_data(index_ru=True)
+
+    response_en = requests.get(f"http://{cnts.HOST}:{cnts.PORT}/{cnts.EN_INDEX_NAME}/_stats")
+    if response_en.status_code != 200:
+        logging.info("Empty EN index!")
+        indexer.index_data(index_en=True)
+
     app.run(debug=True)
