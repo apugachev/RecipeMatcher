@@ -6,6 +6,7 @@ from utils.normalization import RuNormalizer, EnNormalizer
 from utils.query_builder import QueryBuilder
 
 import logging
+from logging import FileHandler, StreamHandler
 import datetime
 
 # export FLASK_APP=app
@@ -53,7 +54,9 @@ if __name__ == "__main__":
     logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
                         level=logging.INFO,
                         handlers=[
-                            logging.FileHandler(f"logs/{datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')}.log"),
-                            logging.StreamHandler()
+                            FileHandler(
+                                f"logs/{datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')}.log"
+                            ),
+                            StreamHandler()
                         ])
     app.run(debug=True)
