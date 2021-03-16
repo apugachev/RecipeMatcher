@@ -11,6 +11,10 @@
   }
 }
 
+body {
+    background-image: url('background_index_veg_blur.jpeg')
+}
+
 .jumbotron p:last-child {
   margin-bottom: 0;
 }
@@ -18,10 +22,18 @@
 .jumbotron-heading {
     font-weight: 300;
     margin-top: 20px;
+    color: white;
 }
 
 .jumbotron .container {
   max-width: 40rem;
+}
+
+.navbar.navbar-expand-sm {
+    opacity: 0.7;
+}
+.navbar-brand {
+    color: white;
 }
 
 footer {
@@ -44,8 +56,14 @@ footer p {
     margin-right: 3rem;
 }
 
+#RecipeButton {
+    border-radius: 5px;
+}
+
 .form-control {
     border-color: lightgray;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
     margin-top: 2rem;
     margin-left: 3rem;
 }
@@ -62,16 +80,23 @@ footer p {
     border-radius: 7%
 }
 
-.container.text-center {
-    background-color:transparent;
+.container-fluid.text-center {
+    /* background-image: url('background_index_veg_blur.jpeg');
+    background-origin: border-box; */
+    display: flex;
+    flex-direction: column;
+}
+
+.container.search-bar {
+    display: flex;
 }
 
 .album {
-    align-items: center;
-    background-image: url('background-blur.jpg');
-    background-size: cover;
+    /* align-items: center;
+    background-image: url('background_index_veg_blur.jpeg'); */
+    background-origin: border-box;
+    background-position: 0 -135px;
     display: flex;
-    background-repeat: repeat;
 }
 
 /* The Modal (background) */
