@@ -60,6 +60,15 @@ footer p {
     border-radius: 5px;
 }
 
+.jumbotron-heading span {
+    background-color:rgba(0,0,0,0.5);
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px
+}
+
 .form-control {
     border-color: lightgray;
     border-top-right-radius: 0;
@@ -81,8 +90,6 @@ footer p {
 }
 
 .container-fluid.text-center {
-    /* background-image: url('background_index_veg_blur.jpeg');
-    background-origin: border-box; */
     display: flex;
     flex-direction: column;
 }
@@ -92,8 +99,6 @@ footer p {
 }
 
 .album {
-    /* align-items: center;
-    background-image: url('background_index_veg_blur.jpeg'); */
     background-origin: border-box;
     background-position: 0 -135px;
     display: flex;

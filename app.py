@@ -16,8 +16,8 @@ import datetime
 ru_normalizer = RuNormalizer(cnts.QUERY_EXPANSION_PATH)
 en_normalizer = EnNormalizer(cnts.QUERY_EXPANSION_PATH)
 indexer = Indexer(
-    ru_data_path="static_files/data/ru_data.jsonl",
-    en_data_path="static_files/data/en_data.jsonl"
+    ru_data_path=cnts.RU_DATA_PATH,
+    en_data_path=cnts.EN_DATA_PATH
 )
 query_builder = QueryBuilder()
 
@@ -66,13 +66,17 @@ if __name__ == "__main__":
                         ])
 
     response_ru = requests.get(f"http://{cnts.HOST}:{cnts.PORT}/{cnts.RU_INDEX_NAME}/_stats")
-    if response_ru.status_code != 200:
-        logging.info("Empty RU index!")
+    if response_ru.status_code != cnts.SUCCESS_STATUS_CODE:
+        logging.info("Empty RU index! Indexer started.")
         indexer.index_data(index_ru=True)
+    else:
+        logging.info("RU index already exists.")
 
     response_en = requests.get(f"http://{cnts.HOST}:{cnts.PORT}/{cnts.EN_INDEX_NAME}/_stats")
-    if response_en.status_code != 200:
-        logging.info("Empty EN index!")
+    if response_en.status_code != cnts.SUCCESS_STATUS_CODE:
+        logging.info("Empty EN index! Indexer started.")
         indexer.index_data(index_en=True)
+    else:
+        logging.info("EN index already exists.")
 
     app.run(debug=True)

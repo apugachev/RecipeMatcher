@@ -10,7 +10,7 @@ class QueryBuilder():
         for token in text.split():
             should.append({
                 "term": {
-                    "ingredients": token
+                    "ingredients_lemm": token
                 }})
 
         return {
@@ -20,5 +20,4 @@ class QueryBuilder():
                     "should": should
                     }
                 },
-
             }

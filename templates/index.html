@@ -47,7 +47,12 @@
               </div>
       </div>
   </form>
-    <h2 class="jumbotron-heading"><span>Search results for: {{query}}</span></h2>
+    <h2 class="jumbotron-heading">
+        <div class="search-result-text" id="SearchResultText">
+            <span>Search results for: {{query}}
+            </span>
+        </div>
+    </h2>
 </div>
 <div class="album py-5">
     <div class="container">
@@ -74,8 +79,9 @@
                         <div class="modal-body">
                             <h4>Ingredients:</h4>
                             {% if hit._source.ingredients_amount %}
-                                {% for ingredient, amount in zip(hit._source.ingredients, hit._source.ingredients_amount) %}
-                                    {% if set(ingredient.lower().split()).intersection(normed_query) %}
+                                {% for ingredient, ingredient_lemm, amount in zip(hit._source.ingredients,
+                            hit._source.ingredients_lemm, hit._source.ingredients_amount) %}
+                                    {% if set(ingredient.lower().split()).intersection(normed_query) or set(ingredient_lemm.lower().split()).intersection(normed_query)%}
                                         <p><font color='green'>✓ {{ ingredient }}: {{ amount }}</font></p>
                                     {% else %}
                                         <p><font color='red'>× {{ ingredient }}: {{ amount }}</font></p>
