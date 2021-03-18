@@ -34,15 +34,15 @@ def my_form_post():
 
     if re.search("[А-яё]+", text):
         normalizer = ru_normalizer
-        index = cnts.RU_INDEX_NAME
+        current_index = cnts.RU_INDEX_NAME
     else:
         normalizer = en_normalizer
-        index = cnts.EN_INDEX_NAME
+        current_index = cnts.EN_INDEX_NAME
 
     normed_text = normalizer.normalize(text)
     elastic_query = query_builder.build_elastic_query(normed_text)
     search_result = requests.get(
-        f"http://{cnts.HOST}:{cnts.PORT}/{index}/_search",
+        f"http://{cnts.HOST}:{cnts.PORT}/{current_index}/_search",
         json=elastic_query)
 
     logging.info(f"Normalized text: {normed_text}")
@@ -64,19 +64,22 @@ if __name__ == "__main__":
                             ),
                             StreamHandler()
                         ])
+    logger = logging.getLogger("app")
 
     response_ru = requests.get(f"http://{cnts.HOST}:{cnts.PORT}/{cnts.RU_INDEX_NAME}/_stats")
     if response_ru.status_code != cnts.SUCCESS_STATUS_CODE:
-        logging.info("Empty RU index! Indexer started.")
+        logger.info("Empty RU index! Indexer started.")
         indexer.index_data(index_ru=True)
     else:
-        logging.info("RU index already exists.")
+        logger.info("RU index already exists.")
 
     response_en = requests.get(f"http://{cnts.HOST}:{cnts.PORT}/{cnts.EN_INDEX_NAME}/_stats")
     if response_en.status_code != cnts.SUCCESS_STATUS_CODE:
-        logging.info("Empty EN index! Indexer started.")
+        logger.info("Empty EN index! Indexer started.")
         indexer.index_data(index_en=True)
     else:
-        logging.info("EN index already exists.")
+        logger.info("EN index already exists.")
 
-    app.run(debug=True)
+    app.run(host=cnts.HOST,
+            port=cnts.PORT,
+            debug=True)

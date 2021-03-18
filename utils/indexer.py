@@ -35,7 +35,8 @@ class Indexer:
                     docs: List[Dict[str, Any]],
                     chunk_size: int
                     ) -> Generator[List[Dict[str, Any]],
-                                   List[Dict[str, Any]]]:
+                                   List[Dict[str, Any]],
+                                   None]:
         """
         Split documents on chunks of a certain size
 
@@ -97,6 +98,7 @@ class Indexer:
         :param bool, index_en: whether to index EN data
         :return:
         """
+        logger = logging.getLogger("indexer")
 
         if index_ru:
             success = self._push_documents_to_elastic(
@@ -104,7 +106,7 @@ class Indexer:
                 f"http://{cnts.HOST}:{cnts.PORT}/{cnts.RU_INDEX_NAME}/_bulk"
             )
             if success:
-                logging.info(f"{len(self._ru_data)} RU documents indexed successfully!")
+                logger.info(f"{len(self._ru_data)} RU documents indexed successfully!")
 
         if index_en:
             success = self._push_documents_to_elastic(
@@ -112,4 +114,4 @@ class Indexer:
                 f"http://{cnts.HOST}:{cnts.PORT}/{cnts.EN_INDEX_NAME}/_bulk"
             )
             if success:
-                logging.info(f"{len(self._en_data)} EN documents indexed successfully!")
+                logger.info(f"{len(self._en_data)} EN documents indexed successfully!")
