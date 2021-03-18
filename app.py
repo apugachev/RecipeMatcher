@@ -80,6 +80,4 @@ if __name__ == "__main__":
     else:
         logger.info("EN index already exists.")
 
-    app.run(host=cnts.HOST,
-            port=cnts.PORT,
-            debug=True)
+    app.run(debug=True)
