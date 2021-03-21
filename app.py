@@ -13,8 +13,8 @@ import datetime
 # export FLASK_APP=app
 # export FLASK_ENV=development
 
-ru_normalizer = RuNormalizer(cnts.QUERY_EXPANSION_PATH)
-en_normalizer = EnNormalizer(cnts.QUERY_EXPANSION_PATH)
+ru_normalizer = RuNormalizer(cnts.INGREDIENTS_MAPPING_PATH)
+en_normalizer = EnNormalizer(cnts.INGREDIENTS_MAPPING_PATH)
 indexer = Indexer(
     ru_data_path=cnts.RU_DATA_PATH,
     en_data_path=cnts.EN_DATA_PATH
@@ -80,4 +80,4 @@ if __name__ == "__main__":
     else:
         logger.info("EN index already exists.")
 
-    app.run(debug=True)
+    app.run(debug=False)

@@ -293,3 +293,5 @@ Temporary Items
 #backgrounds
 /static/background.jpg
 /static/background_index_veg.jpeg
+
+Dockerfile
