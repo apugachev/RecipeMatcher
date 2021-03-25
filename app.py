@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import requests
 import re
 import os
+
 from utils import constants as cnts
 from utils.normalization import RuNormalizer, EnNormalizer
 from utils.query_builder import QueryBuilder
@@ -57,14 +58,14 @@ def my_form_post():
                            set=set)
 
 if __name__ == "__main__":
-    if not os.path.isdir("logs"):
-        os.mkdir("logs")
+    if not os.path.isdir(cnts.LOGS_FOLDER):
+        os.mkdir(cnts.LOGS_FOLDER)
 
     logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
                         level=logging.INFO,
                         handlers=[
                             FileHandler(
-                                f"logs/{datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')}.log"
+                                f"{cnts.LOGS_FOLDER}/{datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')}.log"
                             ),
                             StreamHandler()
                         ])

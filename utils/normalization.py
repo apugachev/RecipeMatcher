@@ -14,7 +14,7 @@ class Normalizer(ABC):
         """
         Class for query normalization
 
-        :param str, ingredients_mapping_file: mapping with renamed ingredients
+        :param str, ingredients_mapping_file: path to mapping with renamed ingredients
         """
 
         with open(ingredients_mapping_file) as f:
@@ -45,7 +45,6 @@ class RuNormalizer(Normalizer):
 
         for token in text.split():
             token_norm = self._morph.parse(token)[0].normal_form
-            # token_norm = token_norm.replace("ё", "е")
             if token_norm in self._mapping:
                 token_norm = self._mapping[token_norm]
 

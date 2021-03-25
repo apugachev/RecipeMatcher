@@ -1,6 +1,7 @@
 EN_INDEX_NAME = "en_recipes"
 RU_INDEX_NAME = "ru_recipes"
 HITS = "hits"
+LOGS_FOLDER = "logs"
 
 EMPTY_STR = ""
 SPACE_STR = " "
