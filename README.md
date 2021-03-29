@@ -1,4 +1,4 @@
-# Ingredients2Recipe
+# RecipeMatcher
 
 ### 1. Install Docker and Python (if necessary)
 
@@ -21,7 +21,7 @@ docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elas
 ### 3. Clone the Repository
 
 ```sh
-git clone https://github.com/apugachev/ingredients2recipe.git
+git clone https://github.com/apugachev/RecipeMatcher.git
 ```
 
 ### 4. Create virtual environment and install dependencies
