@@ -1,12 +1,16 @@
 # RecipeMatcher
 
+------
+
+## Installation Instruction
+
 ### 1. Install Docker and Python (if necessary)
 
-##### 	1.1 Docker
+#### 	1.1 Docker
 
 ​		Link: https://www.docker.com/get-started
 
-##### 	1.2 Python
+#### 	1.2 Python
 
 ​		Link: https://www.python.org/downloads/
 
@@ -40,3 +44,10 @@ python3 app.py
 ```
 
 ### 6. Go to http://127.0.0.1:5000/
+
+------
+
+## Data sources:
+
+- https://www.allrecipes.com/
+- https://eda.ru/
