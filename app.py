@@ -15,6 +15,9 @@ import datetime
 # export FLASK_APP=app
 # export FLASK_ENV=development
 
+ru_regexp = re.compile(cnts.RU_REGEXP)
+en_regexp = re.compile(cnts.EN_REGEXP)
+
 ru_normalizer = RuNormalizer(cnts.INGREDIENTS_MAPPING_PATH)
 en_normalizer = EnNormalizer(cnts.INGREDIENTS_MAPPING_PATH)
 indexer = Indexer(
@@ -34,21 +37,35 @@ def my_form_post():
     text = request.form["user_text"]
     logging.info(f"Raw text: {text}")
 
-    if re.search("[А-яё]+", text):
-        normalizer = ru_normalizer
-        current_index = cnts.RU_INDEX_NAME
+    if not text:
+        logging.info("Empty text")
+        hits = []
+        normed_text = text
+
+    elif ru_regexp.search(text) and en_regexp.search(text):
+        logging.info("Text language: RU and EN")
+        hits = []
+        normed_text = text
+
     else:
-        normalizer = en_normalizer
-        current_index = cnts.EN_INDEX_NAME
+        if ru_regexp.search(text):
+            logging.info("Text language: RU")
+            normalizer = ru_normalizer
+            current_index = cnts.RU_INDEX_NAME
+        else:
+            logging.info("Text language: EN")
+            normalizer = en_normalizer
+            current_index = cnts.EN_INDEX_NAME
 
-    normed_text = normalizer.normalize(text)
-    elastic_query = query_builder.build_elastic_query(normed_text)
-    search_result = requests.get(
-        f"http://{cnts.HOST}:{cnts.PORT}/{current_index}/_search",
-        json=elastic_query)
+        normed_text = normalizer.normalize(text)
+        elastic_query = query_builder.build_elastic_query(normed_text)
 
-    logging.info(f"Normalized text: {normed_text}")
-    hits = search_result.json()[cnts.HITS][cnts.HITS]
+        search_result = requests.get(
+            f"http://{cnts.HOST}:{cnts.PORT}/{current_index}/_search",
+            json=elastic_query)
+
+        logging.info(f"Normalized text: {normed_text}")
+        hits = search_result.json()[cnts.HITS][cnts.HITS]
 
     return render_template(cnts.INDEX_HTML,
                            query=text,
@@ -56,6 +73,7 @@ def my_form_post():
                            hits=hits,
                            zip=zip,
                            set=set)
+
 
 if __name__ == "__main__":
     if not os.path.isdir(cnts.LOGS_FOLDER):
