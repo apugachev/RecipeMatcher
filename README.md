@@ -10,7 +10,7 @@
 
 ​		Link: https://www.python.org/downloads/
 
-### 2. Obtain and run Elasticsearch Docker image
+### 2. Obtain and run Elasticsearch Docker Image
 
 ```sh
 docker pull docker.elastic.co/elasticsearch/elasticsearch:7.11.2
@@ -29,7 +29,7 @@ git clone https://github.com/apugachev/RecipeMatcher.git
 ```sh
 python3 -m venv recipe-env
 source recipe-env/bin/activate
-cd ingredients2recipe
+cd recipematcher
 pip3 install -r requirements.txt
 ```
 
