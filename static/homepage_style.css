@@ -16,12 +16,12 @@ body {
     border-bottom-color: lightgray;
     border-top-color: lightgray;
     border-right-color: lightgray;
-    margin-right: 10rem;
+    margin-right: 3rem;
 }
 
 .form-control {
     border-color: lightgray;
-    margin-left: 10rem;
+    margin-left: 3rem;
 }
 
 .jumbotron {
@@ -39,9 +39,5 @@ body {
   color: white;
 }
 
-.input-group {
-    width: 100%;
-    margin: auto;
-}
 
 
