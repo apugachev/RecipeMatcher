@@ -1,6 +1,6 @@
 # RecipeMatcher
 
-<img src="./static/demo.gif?raw=true" width="720px">
+<img src="./static/demo.gif?raw=true" width="600px">
 
 ------
 
