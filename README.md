@@ -1,6 +1,6 @@
 # RecipeMatcher
 
-![Recipe](https://thumbs.gfycat.com/UnluckyLimitedLark-mobile.mp4)
+![Recipe](https://media.tenor.com/images/73f9a8a69a543269140d36e922050664/tenor.gif)
 
 ------
 
