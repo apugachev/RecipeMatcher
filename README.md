@@ -1,4 +1,4 @@
-# RecipeMatcher
+# Recipe Matcher
 
 <img src="./static/demo.gif?raw=true" width="600px">
 
