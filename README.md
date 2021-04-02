@@ -1,5 +1,7 @@
 # RecipeMatcher
 
+![Recipe](https://thumbs.gfycat.com/UnluckyLimitedLark-mobile.mp4)
+
 ------
 
 ## Installation Instruction
