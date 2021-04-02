@@ -1,6 +1,6 @@
 # RecipeMatcher
 
-![Recipe](https://media.tenor.com/images/73f9a8a69a543269140d36e922050664/tenor.gif)
+<img src="./static/demo.gif?raw=true" width="720px">
 
 ------
 
